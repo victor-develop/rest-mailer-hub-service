@@ -41,8 +41,8 @@ export const startServer: (port: Port) => IServer = (port) => {
     logger.log(err);
 
     if (err.statusCode && /4\d+/.test(err.statusCode)){
-      res.status(HttpStatus.BAD_REQUEST)
-      .json(standardMessage(HttpStatus.BAD_REQUEST));
+      res.status(err.statusCode)
+      .json({ message: err.message });
     } else {
       res.status(HttpStatus.INTERNAL_SERVER_ERROR)
       .json(standardMessage(HttpStatus.INTERNAL_SERVER_ERROR));

@@ -21,32 +21,22 @@ https://app.swaggerhub.com/apis/victor-develop/mailer-hub-service/0.1.0
     npm start
   ```
 
-## TypeScript support
-This project was written in typescript. You can look for function signatures from the .d.ts.
+## TypeScript
+This project was written in typescript. 
 
 ## Development
 
-If you want to further develop this package by your own:
-
-```sh
-  git clone <this repo github clone address>
-  cd <this repo>
-  npm intall
-```
-
 ### Run the tests
-Note that you have to to rename `./src/tests/data/secret/xxxxx.secret.exmaple.ts` back to `./src/tests/data/secret/xxxxx.secret.ts`. Then fill in your own api keys and domain settings in the files. Then you can run
+Make sure you have a `.env` file ready, as mentioned above.
+
+run
 
 ```sh
   npm test
 ```
 
-__Caution__: If you are using MailGun's sandbox domain, running these tests will use up your sandbox message limit pretty quickly, by that time your tests against MailGun service will __fail__, and you will see console error messages  __Error: message limit reached__
+As long as one of your email service providers is up and running, the tests should pass.
 
-### Build 
-```sh
-  npm run build
-```
 
 ## TODOs
  - Validate credentials of different email service providers

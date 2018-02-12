@@ -8,6 +8,8 @@ https://powerful-forest-80587.herokuapp.com
 
 ## RESTful API Documentation
 
+In fact it has only one endpoint, which is for you to send emails. Send records may be considered as features in the future.
+
 https://app.swaggerhub.com/apis/victor-develop/mailer-hub-service/0.1.0
 
 ## Getting Started
@@ -25,9 +27,6 @@ https://app.swaggerhub.com/apis/victor-develop/mailer-hub-service/0.1.0
   ```sh
     npm start
   ```
-
-## TypeScript
-This project was written in typescript. 
 
 ## Development
 

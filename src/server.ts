@@ -3,7 +3,7 @@ import * as bodyParser from 'body-parser';
 import { mailerHub } from './mailer-hub';
 import { ErrorTypes } from 'vicdotdev-mailer-hub';
 import * as HttpStatus from 'http-status-codes';
-import { resourceRouter } from './resource/sendmail-requests';
+import * as sendMailRequests from './resource/sendmail-requests';
 import { standardMessage } from './standatd-message';
 import * as path from 'path';
 
@@ -30,9 +30,9 @@ export const startServer: (port: Port) => IServer = (port) => {
     next();
   });
 
-  app.use(resourceRouter);
+  app.use(sendMailRequests.resourceRouter);
 
-  // app.use(express.static(staticDir));
+  app.use(express.static(staticDir));
 
   app.use((req, res) => {
     res.status(HttpStatus.NOT_FOUND).json({ message: 'Resource Not Found.' });

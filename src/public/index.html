@@ -1,0 +1,102 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Send mail via MailerHub</title>
+  <meta name="description" content="Minimal frontend of MailerHub">
+  <meta name="author" content="Victor Zhou">
+
+  <link rel="stylesheet" href="/site.css">
+  <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+  <script type="text/javascript" src="//vuejs.org/js/vue.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="jumbotron">
+              <h2>
+                MailerHub Restful
+              </h2>
+              <p>
+                MailerHub is connected to a few email service providers. You can submit a send-mail request and the mail will be sent for you.
+                This is a demo showing the REST API usage of this service. You can try it out with the form below or check out the document yourself.
+              </p>
+              <p>
+                <a class="btn btn-primary btn-large" href="https://app.swaggerhub.com/apis/victor-develop/mailer-hub-service/0.1.0">Documentaion</a>
+              </p>
+            </div>
+            <form class="form-horizontal" @submit.prevent="">
+                <fieldset>
+                
+                <!-- Form Name -->
+                <legend>Send an email via MailerHub</legend>
+                
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="textinput">To: </label>  
+                    <div class="col-md-5">
+                    <input id="textinput" name="textinput" type="text" v-model="mail.to" placeholder="recipient's email" class="form-control input-md">
+                      
+                    </div>
+                  </div>
+                   
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="cc-field">Cc: </label>  
+                  <div class="col-md-5">
+                  <input id="cc-field" name="cc-field" type="text" v-model="mail.cc" placeholder="email address" class="form-control input-md">
+                    
+                  </div>
+                </div>
+               
+                <!-- Text input-->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="bcc-field">Bcc: </label>  
+                  <div class="col-md-5">
+                  <input id="bcc-field" name="bcc-field" type="text" v-model="mail.bcc" placeholder="email address" class="form-control input-md">
+                    
+                  </div>
+                </div>
+  
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="subject">Subject: </label>  
+                    <div class="col-md-5">
+                    <input id="subject" name="subject" type="text" v-model="mail.subject" placeholder="one line summary" class="form-control input-md">
+                      
+                    </div>
+                  </div>              
+  
+                <!-- Textarea -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="textarea">Text</label>
+                  <div class="col-md-4">                     
+                    <textarea class="form-control" id="textarea" v-model="mail.text" name="textarea"></textarea>
+                  </div>
+                </div>
+                
+                <!-- Button -->
+                <div class="form-group">
+                  <label class="col-md-4 control-label" for="send-btn"></label>
+                  <div class="col-md-4">
+                    <button id="send-btn" name="send-btn" @click="send()" class="btn btn-primary">Send</button>
+                  </div>
+                </div>
+                
+                </fieldset>
+              </form>                  
+  
+          </div>
+        </div>
+      </div>
+</body>
+<script src="/app.js"></script>
+</html>

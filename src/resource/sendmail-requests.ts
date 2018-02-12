@@ -9,6 +9,8 @@ import { Router } from 'express';
 
 const router = express.Router();
 
+const logger = console;
+
 export const resourceToken = 'sendmail-requests';
 
 const headers: RequestHandler = (req, res, next) => {
@@ -34,7 +36,9 @@ const processSend: RequestHandler = (req, res) => {
     .send({ message: 'send-email request was created and executed successfully' });
   })
   .catch((err) => {
-    if (err instanceof ErrorTypes.IncompleteMailError) {
+    logger.log(err.message);
+    logger.log(err);
+    if (err instanceof ErrorTypes.BadMailError) {
       res.status(HttpStatus.BAD_REQUEST)
         .send({ message: err.message });
     } else if (err instanceof ErrorTypes.AllMailerFailError) {

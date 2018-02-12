@@ -36,7 +36,7 @@
     "nodemon": "^1.14.12",
     "supertest": "^3.0.0",
     "tslint": "^5.9.1",
-    "tslint-config-airbnb-base": "^0.1.0",
+    "tslint-config-airbnb-base": "^0.1.0"
   },
   "dependencies": {
     "dotenv": "^5.0.0",

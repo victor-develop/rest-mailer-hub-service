@@ -5,6 +5,7 @@ import { ErrorTypes } from 'vicdotdev-mailer-hub';
 import * as HttpStatus from 'http-status-codes';
 import { resourceRouter } from './resource/sendmail-requests';
 import { standardMessage } from './standatd-message';
+import * as path from 'path';
 
 export type Port = string | number;
 
@@ -15,7 +16,7 @@ export interface IServer {
 
 const logger = console;
 
-export const resource = 'sendmail-requests';
+export const staticDir = path.join('src','public');
 
 export const startServer: (port: Port) => IServer = (port) => {
   const app = express();
@@ -30,6 +31,8 @@ export const startServer: (port: Port) => IServer = (port) => {
   });
 
   app.use(resourceRouter);
+
+  // app.use(express.static(staticDir));
 
   app.use((req, res) => {
     res.status(HttpStatus.NOT_FOUND).json({ message: 'Resource Not Found.' });

@@ -1,5 +1,6 @@
 import * as supertest from 'supertest';
-import { startServer, resource } from '../server';
+import { startServer } from '../server';
+import { resourceToken } from '../resource/sendmail-requests';
 import { IHubMail } from 'vicdotdev-mailer-hub/dist/interfaces';
 import * as HttpStatus from 'http-status-codes';
 
@@ -8,7 +9,7 @@ const port = process.env.PORT || defaultPort;
 const server = startServer(port);
 const agent = supertest.agent(`http://localhost:${port}`);
 
-describe('send email by POST to /sendmail-requests', () => {
+describe(`send email by POST to /${resourceToken}`, () => {
   const email = {
     to: 'mailnator.a@mailinator.com',
     subject: 'How are you tester',
@@ -17,7 +18,7 @@ describe('send email by POST to /sendmail-requests', () => {
 
   it('succeeds', (done) => {
     agent
-    .post(`/${resource}`)
+    .post(`/${resourceToken}`)
     .send(email)
     .expect(HttpStatus.ACCEPTED)
     .end((err,res) => {
@@ -29,7 +30,7 @@ describe('send email by POST to /sendmail-requests', () => {
 describe('send nothing by POST to /sendmail-requests', () => {
   it('return bad request', (done) => {
     agent
-    .post(`/${resource}`)
+    .post(`/${resourceToken}`)
     .send()
     .expect(HttpStatus.BAD_REQUEST)
     .end((err,res) => {

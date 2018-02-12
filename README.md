@@ -10,6 +10,8 @@ https://powerful-forest-80587.herokuapp.com
 
 In fact it has only one endpoint, which is for you to send emails. Send histories may be considered as features in the future.
 
+I try to give the restful endpoint a noun instead of a verb 'SEND', the url was made to be `/sendmail-requests`, which means this is a resource of all your requests to send an email. For detail, see below:
+
 https://app.swaggerhub.com/apis/victor-develop/mailer-hub-service/0.1.0
 
 ## Getting Started
